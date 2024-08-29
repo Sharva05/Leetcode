@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int largestAltitude(vector<int>& gain) {
+        int position=0,highest=0;
+        for(int altitudes:gain){
+            position+=altitudes;
+            if(position>highest)/*altitude is like steps taken and position tells where you at*/
+                highest=position;
+        }
+        return highest;
+    }
+};
