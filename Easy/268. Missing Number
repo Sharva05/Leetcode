@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int n=nums.size();
+        /*1)n is the largest element in the range since an element is missing(otherwise, it would be n-1.use formula to find sum till there
+        2)sum of all elements till largest-sum of array elements gives missing value*/
+        int expected_sum=n*(n+1)/2,array_sum=0;
+        for(int x:nums) array_sum+=x;
+        return expected_sum-array_sum;
+    }
+};
