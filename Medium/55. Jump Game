@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int position=nums[0];
+        for(int i=0;i<nums.size();i++){
+            if(position>=nums.size()-1)
+                return true;/*you have reached the end point*/
+            if(nums[i]==0 && position==i)/*you traversed till 0 value and still cant get further*/
+                return false;
+            int new_position=i+nums[i];
+            position=max(position,new_position);
+        }
+        return true;
+    }
+};
