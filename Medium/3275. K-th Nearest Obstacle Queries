@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> resultsArray(vector<vector<int>>& queries, int k) {
+        /*i should give kth nearest element after each queries and not the nearest element.So i will create multiset of size k and push the greatest value in the set to result arr.
+        note that i need to insert distance to multiset if that distance is less than greatest value of multiset.multiset will arrange values in increasing order and gives a position to it*/
+        multiset<int>kSmalls;
+        vector<int>result;
+        for(auto it:queries){
+            int temp=abs(it[0])+abs(it[1]);
+            kSmalls.insert(temp);
+            if(kSmalls.size()>k){
+                kSmalls.erase(kSmalls.find(*kSmalls.rbegin()));
+            }
+            if(kSmalls.size()==k) result.push_back(*kSmalls.rbegin());
+            else result.push_back(-1);
+        }
+        return result;
+    }
+};
